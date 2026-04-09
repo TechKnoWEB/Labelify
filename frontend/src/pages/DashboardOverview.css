@@ -1,0 +1,451 @@
+/* DashboardOverview.css — styles for the /dashboard overview page */
+
+/* ─── Page Shell ─────────────────────────────────────────────────────────────── */
+.dash-overview-page {
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  background-image: var(--gradient-bg);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 2rem 2rem 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ─── Page Header ────────────────────────────────────────────────────────────── */
+.dash-overview-header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             1rem;
+  margin-bottom:   2rem;
+  flex-wrap:       wrap;
+}
+
+.dash-overview-header__title {
+  font-size:   1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin:      0 0 0.25rem;
+}
+
+.dash-overview-header__name {
+  color: var(--color-accent-lt);
+}
+
+.dash-overview-header__sub {
+  font-size: 0.85rem;
+  color:     var(--text-secondary);
+  margin:    0;
+}
+
+.dash-overview-header__cta {
+  display:         flex;
+  align-items:     center;
+  gap:             0.4rem;
+  padding:         0.55rem 1.25rem;
+  background:      rgba(99, 102, 241, 0.15);
+  border:          1px solid rgba(99, 102, 241, 0.4);
+  border-radius:   var(--r-full);
+  color:           var(--acc-prim-lt);
+  font-size:       0.85rem;
+  font-weight:     600;
+  text-decoration: none;
+  white-space:     nowrap;
+  transition:      all 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dash-overview-header__cta:hover {
+  background: rgba(99, 102, 241, 0.28);
+  box-shadow: var(--sh-glow);
+  transform:  translateY(-1px);
+}
+
+/* ─── Stat Cards Row ─────────────────────────────────────────────────────────── */
+.dash-stats-row {
+  display:               grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:                   1rem;
+  margin-bottom:         2rem;
+}
+
+.dash-stat-card {
+  --card-accent: var(--color-accent);
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.05rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 18px;
+  box-shadow: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.dash-stat-card:hover {
+  border-color: rgba(148, 163, 184, 0.28);
+  background: rgba(255, 255, 255, 0.055);
+  transform: translateY(-2px);
+}
+
+.dash-stat-card__glow {
+  display: none;
+}
+
+.dash-stat-card__icon-wrap {
+  position: relative;
+}
+
+.dash-stat-card__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--card-accent) 14%, rgba(255, 255, 255, 0.03));
+  border: 1px solid color-mix(in srgb, var(--card-accent) 22%, rgba(148, 163, 184, 0.18));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent);
+  box-shadow: none;
+}
+
+.dash-stat-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dash-stat-card__value {
+  font-size: clamp(1.35rem, 1.9vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-main);
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.dash-stat-card__label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin: 0 0 0.45rem;
+}
+
+.dash-stat-card__sub {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  font-weight: 500;
+}
+
+/* ─── Tabs ───────────────────────────────────────────────────────────────────── */
+.dash-tabs {
+  display:       flex;
+  gap:           0.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0;
+  overflow-x:    auto;
+  scrollbar-width: none;
+}
+
+.dash-tabs::-webkit-scrollbar { display: none; }
+
+.dash-tab {
+  display:       flex;
+  align-items:   center;
+  gap:           0.4rem;
+  padding:       0.55rem 1rem;
+  background:    transparent;
+  border:        none;
+  border-bottom: 2px solid transparent;
+  color:         var(--text-dim);
+  font-size:     0.85rem;
+  font-weight:   500;
+  cursor:        pointer;
+  white-space:   nowrap;
+  font-family:   inherit;
+  transition:    color 0.15s ease, border-color 0.15s ease;
+  margin-bottom: -1px;
+}
+
+.dash-tab:hover {
+  color: var(--text-primary);
+}
+
+.dash-tab--active {
+  color:        var(--acc-prim-lt);
+  border-bottom-color: var(--acc-prim);
+  font-weight:  600;
+}
+
+/* ─── Tab Panel ──────────────────────────────────────────────────────────────── */
+.dash-tab-panel {
+  animation: fadeSlideUp 0.2s var(--ease-out) both;
+}
+
+/* ─── Section ────────────────────────────────────────────────────────────────── */
+.dash-section {
+  background:    rgba(255,255,255,0.025);
+  border:        1px solid var(--border-color);
+  border-radius: var(--r-lg);
+  padding:       1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dash-section__head {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             1rem;
+  margin-bottom:   1.25rem;
+  flex-wrap:       wrap;
+}
+
+.dash-section__title {
+  display:     flex;
+  align-items: center;
+  gap:         0.5rem;
+  font-size:   1rem;
+  font-weight: 600;
+  color:       var(--text-primary);
+  margin:      0;
+}
+
+.dash-section__title-icon {
+  font-size:    0.9rem;
+  color:        var(--color-accent-lt);
+  opacity:      0.85;
+}
+
+.dash-section__action-link {
+  font-size:       0.8rem;
+  font-weight:     600;
+  color:           var(--color-accent-lt);
+  text-decoration: none;
+  opacity:         0.8;
+  transition:      opacity 0.15s ease;
+}
+
+.dash-section__action-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ─── Table ──────────────────────────────────────────────────────────────────── */
+.dash-table-wrap {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.dash-table {
+  width:           100%;
+  border-collapse: collapse;
+  font-size:       0.85rem;
+}
+
+.dash-table thead tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dash-table th {
+  padding:        0.5rem 0.75rem;
+  text-align:     left;
+  font-size:      0.7rem;
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color:          var(--text-muted);
+  white-space:    nowrap;
+}
+
+.dash-table td {
+  padding:     0.65rem 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color:       var(--text-main);
+  vertical-align: middle;
+}
+
+.dash-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.dash-table tbody tr:hover td {
+  background: rgba(255,255,255,0.025);
+}
+
+.dash-table__primary {
+  font-weight: 500;
+}
+
+.dash-table__muted {
+  color: var(--text-muted) !important;
+  font-size: 0.8rem;
+}
+
+/* ─── Badge ──────────────────────────────────────────────────────────────────── */
+.dash-badge {
+  display:       inline-block;
+  padding:       2px 9px;
+  border-radius: var(--r-full);
+  font-size:     0.76rem;
+  font-weight:   600;
+  white-space:   nowrap;
+}
+
+.dash-badge--accent {
+  background: rgba(108,99,255,0.12);
+  border:     1px solid rgba(108,99,255,0.3);
+  color:      var(--color-accent-lt);
+}
+
+.dash-badge--danger {
+  background: rgba(255,77,109,0.1);
+  border:     1px solid rgba(255,77,109,0.28);
+  color:      var(--color-danger);
+}
+
+/* ─── Credit Summary Bar ─────────────────────────────────────────────────────── */
+.dash-credit-summary {
+  display:       flex;
+  align-items:   center;
+  gap:           1.5rem;
+  padding:       1rem 1.25rem;
+  background:    rgba(99, 102, 241, 0.06);
+  border:        1px solid rgba(99, 102, 241, 0.15);
+  border-radius: var(--r-md);
+  margin-bottom: 1.25rem;
+  flex-wrap:     wrap;
+}
+
+.dash-credit-summary__item {
+  display:        flex;
+  flex-direction: column;
+  gap:            2px;
+}
+
+.dash-credit-summary__num {
+  font-size:   1.2rem;
+  font-weight: 700;
+  color:       var(--color-accent-lt);
+}
+
+.dash-credit-summary__lbl {
+  font-size:      0.7rem;
+  font-weight:    500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color:          var(--text-muted);
+}
+
+.dash-credit-summary__divider {
+  width:      1px;
+  height:     36px;
+  background: var(--border-color);
+  flex-shrink: 0;
+}
+
+/* ─── Empty State ────────────────────────────────────────────────────────────── */
+.dash-empty {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  gap:             0.75rem;
+  padding:         2.5rem 1rem;
+  text-align:      center;
+}
+
+.dash-empty__icon {
+  font-size:  2rem;
+  opacity:    0.25;
+}
+
+.dash-empty__msg {
+  font-size:  0.88rem;
+  color:      var(--text-secondary);
+  max-width:  380px;
+  line-height: 1.5;
+  margin:     0;
+}
+
+.dash-empty__hint {
+  font-size: 0.82rem;
+  color:     var(--text-muted);
+  margin:    0;
+}
+
+.dash-empty__cta {
+  font-size:       0.82rem;
+  font-weight:     600;
+  color:           var(--color-accent-lt);
+  text-decoration: none;
+}
+
+.dash-empty__cta:hover {
+  text-decoration: underline;
+}
+
+.dash-empty__link {
+  color:           var(--color-accent-lt);
+  text-decoration: underline;
+}
+
+/* ─── Loading ────────────────────────────────────────────────────────────────── */
+.dash-loading {
+  font-size: 0.85rem;
+  color:     var(--text-muted);
+  padding:   1rem 0;
+  margin:    0;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .dash-overview-page {
+    padding: 1.25rem 1rem 0;
+  }
+
+  .dash-overview-header__title {
+    font-size: 1.35rem;
+  }
+
+  .dash-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .dash-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-stat-card {
+    grid-template-columns: 48px 1fr;
+    gap: 0.85rem;
+    padding: 1rem;
+  }
+
+  .dash-stat-card__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+
+  .dash-section {
+    padding: 1rem;
+  }
+
+  .dash-credit-summary__divider {
+    display: none;
+  }
+}
